@@ -81,7 +81,7 @@ class Hero(Character):
 
 class Goblin(Character):
     def __init__(self):
-        self.name = 'Goblin'
+        self.name = 'GoblinGoon'
         self.health = 6
         self.power = 2
         self.coins = 5
@@ -107,7 +107,7 @@ class Wizard(Character):
 #new character, Medic:
 class Medic(Character):
     def __init__(self):
-        self.name = 'Joker Mage'
+        self.name = 'HealingHydra'
         self.health = 5
         self.power = 2
         self.coins = 7
@@ -127,7 +127,7 @@ class Medic(Character):
 #new character, Shadow:
 class Shadow(Character):
     def __init__(self):
-        self.name = 'Forget-me-Not'
+        self.name = 'Noob Saibot'
         self.health = 1
         self.power = 7
         self.coins = 5
@@ -147,7 +147,7 @@ class Shadow(Character):
 #new character that doesn't die, Zombie
 class Zombie(Character):
     def __init__(self):
-        self.name = 'the_Undead-Rises'
+        self.name = 'th3_Und3ad-R1s3s'
         self.health = 4
         self.power = 1
 
@@ -158,7 +158,7 @@ class Zombie(Character):
 
 class Witch(Character):
     def __init__(self):
-        self.name = 'Bellatrix Lestrange'
+        self.name = 'Rita Repulsa'
         self.health = 20
         self.power = 1
         self.coins = 10
