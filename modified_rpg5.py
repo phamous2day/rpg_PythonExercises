@@ -4,6 +4,17 @@ Added a store. The hero can now buy a tonic or a sword. A tonic will add 2 to th
 import random
 import time
 
+# Thanks StackOverflow for the colors:
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 class Character(object):
     def alive(self):
         return self.health > 0
@@ -11,7 +22,7 @@ class Character(object):
     def attack(self, enemy):
         if not self.alive():
             return
-        print "%s attacks %s" % (self.name, enemy.name)
+        print bcolors.OKBLUE + "%s attacks %s" % (self.name, enemy.name)
         enemy.receive_damage(self.power)
         time.sleep(1.5)
 
@@ -19,7 +30,7 @@ class Character(object):
         self.health -= points
         print "%s received %d damage." % (self.name, points)
         if self.health <= 0:
-            print "%s is dead." % self.name
+            print bcolors.FAIL + "%s is dead." % self.name
 
     def print_status(self):
         print "%s has %d health and %d power." % (self.name, self.health, self.power)
@@ -40,7 +51,7 @@ class Hero(Character):
             return
         double_power = random.random() > .8 # this happens 20% chance to double power points
         if double_power:
-            print "%s doubles power with %s during attack" % (self.name, enemy.name)
+            print bcolors.OKBLUE + "%s doubles power with %s during attack" % (self.name, enemy.name)
             enemy.receive_damage(self.power*2)
 
         super(Hero, self).attack(enemy)
@@ -68,7 +79,7 @@ class Hero(Character):
 
     def restore(self):
         self.health = 10
-        print "Hero's heath is restored to %d!" % self.health
+        print bcolors.OKGREEN + "Hero's heath is restored to %d!" % self.health
         time.sleep(1)
 
     def buy(self, item):
@@ -244,13 +255,11 @@ class Battle(object):
         if hero.alive():
             print "You defeated the %s" % enemy.name
             hero.receive_coins(enemy.coins)
-            print "%s received %d coins." % (hero.name, enemy.coins)
+            print "%s received %d coins." % (hero.name, enemy.coins) + bcolors.ENDC
             return True
         else:
-            print "YOU LOSE!"
+            print "YOU LOSE!" + bcolors.ENDC
             return False
-
-
 
 
 
