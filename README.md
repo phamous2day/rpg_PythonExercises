@@ -13,13 +13,14 @@ Learning about inheritance by making multiple characters in an RPG inherit essen
 ## Obstacles
 It was tough getting creative with each enemy abilities especially when I started thinking of weird ways to tamper with health and power points:
 
+```python
 class Chimera(Character):
     def __init__(self):
         self.name = 'Chimera'
         self.health = 30
         self.power = 2
         self.coins = 30
-```python
+
     def attack(self, hero):
         double_vulnerability = random.random() > 0.8 # this happens 20% chance to double power points
         if double_vulnerability:
